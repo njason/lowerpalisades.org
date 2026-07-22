@@ -10,10 +10,16 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Lower Palisades</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="history.html">History</a></li>
                 <li><a href="area.html">The Area</a></li>
                 <li><a href="issues.html">Issues &amp; Solutions</a></li>
+                <li><a href="events.html">Events</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
@@ -38,8 +44,9 @@
             <div class="signup-box">
                 <h2>Stay Involved</h2>
                 <p>Join our mailing list for project updates and volunteer opportunities.</p>
-                <form class="signup-form" action="https://lowerpalisades.us-mailchimp.com/subscribe" method="post">
-                    <input type="email" name="email" placeholder="Your email address" required>
+                <form class="signup-form" action="https://lowerpalisades.us2.list-manage.com/subscribe/post?u=3729a6281c1b321b8a97585e9&amp;id=2f850af46c&amp;f_id=00a8c2e1f0" method="post" target="_blank">
+                    <input type="email" name="EMAIL" placeholder="Your email address" required>
+                    <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_3729a6281c1b321b8a97585e9_2f850af46c" tabindex="-1" value=""></div>
                     <button type="submit" class="btn">Sign Up</button>
                 </form>
                 <p class="signup-note">Or email us directly: <a href="mailto:info@lowerpalisades.org">info@lowerpalisades.org</a></p>
@@ -108,5 +115,6 @@
             <p class="footer-note">Lower Palisades Restoration Project &bull; Jersey City Environmental Commission</p>
         </div>
     </footer>
+    <script src="nav.js"></script>
 </body>
 </html>
