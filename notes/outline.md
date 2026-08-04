@@ -1,0 +1,12 @@
+# sections
+- Mission statement
+- Goals/Initiatives
+- News
+- Background /History
+- Personnel
+- Events
+- Donate
+- Contact
+- Join
+- Partners
+- Socials/blog
