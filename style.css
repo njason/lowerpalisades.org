@@ -1265,6 +1265,56 @@ figcaption small {
 
 
 /* ==========================================================================
+   SUBPAGE HEADER
+   ========================================================================== */
+
+.page-hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: calc(var(--nav-h) + clamp(3.5rem, 8vw, 7rem)) 0 clamp(3rem, 6vw, 5rem);
+}
+
+.page-hero .shell {
+    max-width: 62rem;
+}
+
+.page-hero .eyebrow {
+    color: var(--sage);
+}
+
+.page-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+}
+
+.page-back:hover {
+    color: var(--paper);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.06;
+    margin: 0.4rem 0 1.25rem;
+}
+
+.page-lede {
+    max-width: 46ch;
+    font-size: clamp(1.02rem, 1.6vw, 1.24rem);
+    line-height: 1.65;
+    color: var(--sage);
+}
+
+
+/* ==========================================================================
    RESPONSIVE — device tiers
    --------------------------------------------------------------------------
    >= 1025px      desktop   full horizontal nav, multi-column, horizontal timeline
@@ -1486,7 +1536,7 @@ figcaption small {
     }
 
     .partner-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .contact-grid {
