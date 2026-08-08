@@ -164,18 +164,6 @@ h4 {
     color: var(--sage);
 }
 
-.eyebrow::before {
-    content: attr(data-num);
-    font-variant-numeric: tabular-nums;
-    color: var(--clay);
-    letter-spacing: 0.1em;
-}
-
-.band--forest .eyebrow::before,
-.band--ink .eyebrow::before {
-    color: var(--gold);
-}
-
 .eyebrow::after {
     content: "";
     flex: 1;
@@ -1092,6 +1080,23 @@ figcaption small {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--gold);
+}
+
+.resource-group {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.9rem;
+}
+
+.resource-group + .link-list {
+    margin-bottom: clamp(2.25rem, 4vw, 3rem);
+}
+
+.resource-group + .link-list:last-child {
+    margin-bottom: 0;
 }
 
 .social-row {
