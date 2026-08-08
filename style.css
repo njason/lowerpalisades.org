@@ -1023,49 +1023,6 @@ figcaption small {
     overflow: hidden;
 }
 
-/* --- Donate --------------------------------------------------------------- */
-.donate {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-}
-
-.donate-panel {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--rule-invert);
-    border-radius: 4px;
-    padding: clamp(1.75rem, 3.5vw, 2.75rem);
-}
-
-.donate-panel h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.donate-panel ul {
-    list-style: none;
-}
-
-.donate-panel li {
-    display: flex;
-    gap: 0.75rem;
-    padding-block: 0.5rem;
-    font-size: 0.96rem;
-    color: var(--text-invert-muted);
-    border-bottom: 1px solid var(--rule-invert);
-}
-
-.donate-panel li:last-child {
-    border-bottom: 0;
-}
-
-.donate-panel li::before {
-    content: "▸";
-    color: var(--gold);
-    flex-shrink: 0;
-}
-
 /* --- Partners ------------------------------------------------------------- */
 .partner-grid {
     display: grid;
@@ -1409,7 +1366,6 @@ figcaption small {
     /* Two-column blocks collapse */
     .mission-body,
     .split,
-    .donate,
     .person {
         grid-template-columns: 1fr;
     }
