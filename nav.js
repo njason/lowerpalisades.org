@@ -1,20 +1,109 @@
-// Mobile nav toggle
-document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.querySelector('.nav-toggle');
-    var navLinks = document.querySelector('.nav-links');
+(function () {
+    'use strict';
 
-    if (toggle && navLinks) {
+    /* --- Mobile navigation ------------------------------------------------ */
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('primaryNav');
+
+    function closeNav() {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (toggle && nav) {
         toggle.addEventListener('click', function () {
-            toggle.classList.toggle('active');
-            navLinks.classList.toggle('open');
+            var open = nav.classList.toggle('is-open');
+            toggle.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
         });
 
-        // Close menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                toggle.classList.remove('active');
-                navLinks.classList.remove('open');
-            });
+        nav.addEventListener('click', function (e) {
+            if (e.target.closest('a')) closeNav();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeNav();
         });
     }
-});
+
+    /* --- Masthead background on scroll ------------------------------------ */
+    var masthead = document.getElementById('masthead');
+
+    function syncMasthead() {
+        masthead.classList.toggle('is-stuck', window.scrollY > 60);
+    }
+
+    if (masthead) {
+        syncMasthead();
+        window.addEventListener('scroll', syncMasthead, { passive: true });
+    }
+
+    /* --- Reveal on scroll -------------------------------------------------- */
+    var revealables = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+    function reveal(el) {
+        el.classList.add('is-visible');
+    }
+
+    if ('IntersectionObserver' in window) {
+        var revealer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    reveal(entry.target);
+                    revealer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+
+        revealables.forEach(function (el) { revealer.observe(el); });
+
+        // Instant jumps (hash links, restored scroll) can skip observer callbacks,
+        // so anything already scrolled past is revealed unconditionally.
+        window.addEventListener('scroll', function () {
+            revealables.forEach(function (el) {
+                if (!el.classList.contains('is-visible') &&
+                    el.getBoundingClientRect().top < window.innerHeight) {
+                    reveal(el);
+                    revealer.unobserve(el);
+                }
+            });
+        }, { passive: true });
+    } else {
+        revealables.forEach(reveal);
+    }
+
+    /* --- Scrollspy --------------------------------------------------------- */
+    var navLinks = Array.prototype.slice.call(
+        document.querySelectorAll('.nav-links a[href^="#"]')
+    );
+    var sections = navLinks
+        .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+        .filter(Boolean);
+
+    function syncActive() {
+        var marker = window.scrollY + window.innerHeight * 0.32;
+        var atBottom =
+            window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+        var current = atBottom ? sections[sections.length - 1] : null;
+
+        if (!atBottom) {
+            sections.forEach(function (section) {
+                if (section.offsetTop <= marker) current = section;
+            });
+        }
+
+        navLinks.forEach(function (link) {
+            link.classList.toggle(
+                'is-active',
+                current !== null && link.getAttribute('href') === '#' + current.id
+            );
+        });
+    }
+
+    if (sections.length) {
+        syncActive();
+        window.addEventListener('scroll', syncActive, { passive: true });
+        window.addEventListener('resize', syncActive);
+    }
+})();
