@@ -960,22 +960,36 @@ figcaption small {
 
 /* --- Signup / Join -------------------------------------------------------- */
 .signup {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
     margin-top: 2rem;
     max-width: 540px;
 }
 
+.signup-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.6rem;
+}
+
+.signup-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
 .signup input[type="email"] {
-    flex: 1 1 250px;
-    padding: 0.95rem 1.25rem;
+    flex: 1 1 240px;
+    min-width: 0;
+    padding: 0.8rem 1rem;
     font-family: inherit;
-    font-size: 0.98rem;
+    font-size: 1rem;
     color: var(--white);
     background: rgba(255, 255, 255, 0.07);
-    border: 1.5px solid var(--rule-invert);
-    border-radius: 999px;
+    border: 1px solid var(--rule-invert);
+    border-radius: 4px;
     transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
 }
 
@@ -987,6 +1001,11 @@ figcaption small {
     border-color: var(--gold);
     background: rgba(255, 255, 255, 0.12);
     outline: none;
+}
+
+.signup .btn {
+    border-radius: 4px;
+    padding: 0.8rem 1.6rem;
 }
 
 .signup-note {
@@ -1491,15 +1510,21 @@ figcaption small {
         order: -1;
     }
 
-    /* Signup goes full width for comfortable tap targets */
+    /* Signup stacks into a conventional full-width form */
     .signup {
-        flex-direction: column;
         max-width: none;
+    }
+
+    .signup-row {
+        flex-direction: column;
+        gap: 0.55rem;
     }
 
     .signup input[type="email"],
     .signup .btn {
+        flex: none;
         width: 100%;
+        min-height: 48px;
         justify-content: center;
     }
 
