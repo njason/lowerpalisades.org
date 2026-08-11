@@ -48,6 +48,83 @@
         window.addEventListener('scroll', syncMasthead, { passive: true });
     }
 
+    /* --- Upcoming event popup ---------------------------------------------- */
+    var eventPopup = document.getElementById('eventPopup');
+    var dismissEventPopup = document.getElementById('dismissEventPopup');
+
+    function selectFeaturedEvent(events, now) {
+        var futureEvents = events
+            .filter(function (event) { return event.start >= now; })
+            .sort(function (a, b) { return a.start - b.start; });
+
+        if (futureEvents.length) {
+            return { event: futureEvents[0], label: 'Upcoming event' };
+        }
+
+        var pastEvents = events
+            .filter(function (event) { return event.start < now; })
+            .sort(function (a, b) { return b.start - a.start; });
+
+        return pastEvents.length ? { event: pastEvents[0], label: 'Last event' } : null;
+    }
+
+    if (eventPopup && dismissEventPopup) {
+        fetch('events.html')
+            .then(function (response) {
+                if (!response.ok) throw new Error('Events calendar returned ' + response.status);
+                return response.text();
+            })
+            .then(function (html) {
+                var calendar = new DOMParser().parseFromString(html, 'text/html');
+                var events = Array.prototype.slice.call(
+                    calendar.querySelectorAll('.event[data-event-start]')
+                ).map(function (element) {
+                    return {
+                        id: element.dataset.eventStart,
+                        start: new Date(element.dataset.eventStart),
+                        displayDate: element.dataset.eventDisplay,
+                        location: element.dataset.eventLocation,
+                        title: element.querySelector('h3').textContent.trim()
+                    };
+                }).filter(function (event) {
+                    return !Number.isNaN(event.start.getTime());
+                });
+                var featured = selectFeaturedEvent(events, new Date());
+
+                if (!featured) return;
+
+                var eventPopupKey = 'dismissed-event-' + featured.event.id;
+                if (localStorage.getItem(eventPopupKey) === 'true') return;
+
+                document.getElementById('eventPopupLabel').textContent = featured.label;
+                document.getElementById('eventPopupTitle').textContent = featured.event.title;
+                document.getElementById('eventPopupDate').textContent = featured.event.displayDate;
+                document.getElementById('eventPopupLocation').textContent = featured.event.location;
+
+                function showEventPopup() {
+                    eventPopup.hidden = false;
+                    window.requestAnimationFrame(function () {
+                        eventPopup.classList.add('is-visible');
+                    });
+                }
+
+                function hideEventPopup() {
+                    localStorage.setItem(eventPopupKey, 'true');
+                    eventPopup.classList.remove('is-visible');
+                    eventPopup.hidden = true;
+                }
+
+                showEventPopup();
+                dismissEventPopup.addEventListener('click', hideEventPopup);
+                eventPopup.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') hideEventPopup();
+                });
+            })
+            .catch(function (error) {
+                console.error('Unable to load the featured event popup.', error);
+            });
+    }
+
     /* --- Reveal on scroll -------------------------------------------------- */
     var revealables = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
 
