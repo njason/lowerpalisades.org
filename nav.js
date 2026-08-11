@@ -101,15 +101,11 @@
                 document.getElementById('eventPopupDate').textContent = featured.event.displayDate;
                 document.getElementById('eventPopupLocation').textContent = featured.event.location;
 
-                var eventPopupTimer;
-
                 function showEventPopup() {
-                    window.clearTimeout(eventPopupTimer);
                     eventPopup.hidden = false;
                     window.requestAnimationFrame(function () {
                         eventPopup.classList.add('is-visible');
                     });
-                    window.removeEventListener('scroll', showEventPopup);
                 }
 
                 function hideEventPopup() {
@@ -118,8 +114,7 @@
                     eventPopup.hidden = true;
                 }
 
-                eventPopupTimer = window.setTimeout(showEventPopup, 4000);
-                window.addEventListener('scroll', showEventPopup, { once: true, passive: true });
+                showEventPopup();
                 dismissEventPopup.addEventListener('click', hideEventPopup);
                 eventPopup.addEventListener('keydown', function (e) {
                     if (e.key === 'Escape') hideEventPopup();
