@@ -1694,11 +1694,58 @@ figcaption small {
 
     .event-popup {
         top: calc(var(--nav-h) + 0.65rem);
-        right: 1rem;
+        right: 0.5rem;
         bottom: auto;
-        left: auto;
-        width: min(290px, calc(100vw - 2rem));
-        padding: 1.1rem 2.8rem 1.1rem 1.2rem;
+        left: 0.5rem;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 0.75rem;
+        width: auto;
+        padding: 0.7rem 2.5rem 0.7rem 0.9rem;
+        border-left-width: 4px;
+        border-radius: 7px;
+    }
+
+    .event-popup-label,
+    .event-popup h2 {
+        grid-column: 1 / -1;
+    }
+
+    .event-popup-label {
+        margin-bottom: 0.15rem;
+        font-size: 0.6rem;
+        line-height: 1.2;
+    }
+
+    .event-popup h2 {
+        font-size: 1.05rem;
+        line-height: 1.15;
+    }
+
+    .event-popup-details {
+        display: block;
+        margin: 0.3rem 0 0;
+        font-size: 0.74rem;
+        line-height: 1.25;
+    }
+
+    #eventPopupLocation {
+        display: none;
+    }
+
+    .event-popup-link {
+        align-self: end;
+        font-size: 0.68rem;
+        line-height: 1.25;
+        white-space: nowrap;
+    }
+
+    .event-popup-close {
+        top: 0.35rem;
+        right: 0.35rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1.35rem;
     }
 
     .events-calendar {
