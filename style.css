@@ -1065,10 +1065,10 @@ figcaption small {
 /* --- Events --------------------------------------------------------------- */
 .event-popup {
     position: fixed;
+    top: calc(var(--nav-h) + 0.75rem);
     right: clamp(1rem, 3vw, 2rem);
-    bottom: clamp(1rem, 3vw, 2rem);
     z-index: 900;
-    width: min(390px, calc(100vw - 2rem));
+    width: min(340px, calc(100vw - 2rem));
     padding: 1.35rem 3.25rem 1.35rem 1.5rem;
     color: var(--text);
     background: var(--paper);
@@ -1693,10 +1693,12 @@ figcaption small {
     }
 
     .event-popup {
+        top: calc(var(--nav-h) + 0.65rem);
         right: 1rem;
-        bottom: calc(1rem + env(safe-area-inset-bottom));
-        left: 1rem;
-        width: auto;
+        bottom: auto;
+        left: auto;
+        width: min(290px, calc(100vw - 2rem));
+        padding: 1.1rem 2.8rem 1.1rem 1.2rem;
     }
 
     .events-calendar {

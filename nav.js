@@ -65,7 +65,7 @@
             .filter(function (event) { return event.start < now; })
             .sort(function (a, b) { return b.start - a.start; });
 
-        return pastEvents.length ? { event: pastEvents[0], label: 'Latest event' } : null;
+        return pastEvents.length ? { event: pastEvents[0], label: 'Last event' } : null;
     }
 
     if (eventPopup && dismissEventPopup) {
