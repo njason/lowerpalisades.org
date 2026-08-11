@@ -1461,22 +1461,6 @@ figcaption small {
     color: var(--sage);
 }
 
-.page-back {
-    display: inline-block;
-    margin-bottom: 2rem;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--sage);
-    text-decoration: none;
-}
-
-.page-back:hover {
-    color: var(--paper);
-}
-
 .page-title {
     font-family: var(--font-display);
     font-weight: 500;
