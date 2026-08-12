@@ -1665,6 +1665,11 @@ figcaption small {
         min-height: 92svh;
     }
 
+    .hero-media img {
+        object-position: right center;
+        transform: none;
+    }
+
     .hero h1 {
         font-size: clamp(2.35rem, 10.5vw, 3.4rem);
     }
