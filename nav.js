@@ -202,13 +202,31 @@
                 var events = eventsByDate[eventDateKey(date)];
                 var day = document.createElement(events ? 'button' : 'span');
                 day.className = 'calendar-day';
-                day.textContent = date.getDate();
+
+                var dayNumber = document.createElement('span');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = date.getDate();
+                day.appendChild(dayNumber);
 
                 if (date.getMonth() !== month) day.classList.add('is-outside');
 
                 if (events) {
                     day.type = 'button';
                     day.classList.add('has-event');
+
+                    var eventTitle = document.createElement('span');
+                    eventTitle.className = 'calendar-day-event';
+                    eventTitle.textContent = events[0].title;
+                    day.appendChild(eventTitle);
+
+                    var eventTime = document.createElement('span');
+                    eventTime.className = 'calendar-day-time';
+                    eventTime.textContent = events[0].start.toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    });
+                    day.appendChild(eventTime);
+
                     day.setAttribute('aria-label', date.toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',

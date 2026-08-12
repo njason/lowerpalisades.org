@@ -1126,9 +1126,12 @@ figcaption small {
 
 .calendar-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
-    gap: clamp(1.5rem, 4vw, 3.5rem);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
     align-items: stretch;
+}
+
+.events-page {
+    padding-top: var(--nav-h);
 }
 
 .calendar {
@@ -1185,7 +1188,7 @@ figcaption small {
 
 .calendar-day {
     position: relative;
-    min-height: clamp(52px, 7vw, 76px);
+    min-height: clamp(88px, 10vw, 132px);
     padding: 0.55rem;
     border: 0;
     border-top: 1px solid var(--rule);
@@ -1193,6 +1196,28 @@ figcaption small {
     background: transparent;
     font: inherit;
     text-align: left;
+}
+
+.calendar-day-number {
+    display: block;
+    font-weight: 650;
+}
+
+.calendar-day-event {
+    display: block;
+    margin-top: 0.65rem;
+    color: var(--moss);
+    font-size: clamp(0.7rem, 1vw, 0.84rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.calendar-day-time {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 500;
 }
 
 button.calendar-day {
@@ -1225,7 +1250,7 @@ button.calendar-day:hover,
 }
 
 .calendar-details {
-    min-height: 100%;
+    min-height: 240px;
     padding: clamp(1.5rem, 3vw, 2.25rem);
     color: var(--text-invert);
     background: var(--forest);
@@ -1847,18 +1872,23 @@ button.calendar-day:hover,
         font-size: 1.35rem;
     }
 
-    .calendar-layout {
-        grid-template-columns: 1fr;
-    }
-
     .calendar-details {
-        min-height: 260px;
+        min-height: 220px;
     }
 
     .calendar-day {
-        min-height: 48px;
+        min-height: 72px;
         padding: 0.4rem;
         font-size: 0.82rem;
+    }
+
+    .calendar-day-event {
+        margin-top: 0.35rem;
+        font-size: 0.64rem;
+    }
+
+    .calendar-day-time {
+        display: none;
     }
 
     .calendar-day.has-event::after {
