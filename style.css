@@ -1597,6 +1597,10 @@ button.calendar-day:hover {
     max-width: 62rem;
 }
 
+.page-hero--centered {
+    text-align: center;
+}
+
 .page-hero .eyebrow {
     color: var(--sage);
 }
