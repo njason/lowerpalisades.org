@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Calendar &mdash; Lower Palisades Restoration Project</title>
-    <meta name="description" content="Upcoming events, walks and volunteer days on the Lower Palisades.">
+    <title>Wildlife &mdash; Lower Palisades Restoration Project</title>
+    <meta name="description" content="Wildlife and habitat found along the Lower Palisades in Hudson and Bergen Counties, New Jersey.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- ====================== MASTHEAD ====================== -->
 <header class="masthead" id="masthead">
     <div class="masthead-inner">
         <a href="index.html" class="brand">
@@ -31,10 +30,10 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="history.html">History</a></li>
-                <li><a href="wildlife.html">Wildlife</a></li>
+                <li><a href="wildlife.html" class="is-active" aria-current="page">Wildlife</a></li>
                 <li><a href="plan.html">Our Plan</a></li>
                 <li><a href="people.html">Our Team</a></li>
-                <li><a href="events.html" class="is-active">Events</a></li>
+                <li><a href="events.html">Events</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="mailto:info@lowerpalisades.org">Contact</a></li>
             </ul>
@@ -43,57 +42,57 @@
     </div>
 </header>
 
-<!-- ====================== PAGE HEAD ====================== -->
-<section class="page-hero">
-    <div class="shell">
-        <p class="eyebrow">Events</p>
-        <h1 class="page-title">Events Calendar</h1>
-        <p class="page-lede">Walks, bird counts and volunteer days on the Lower Palisades. Sign up for the mailing list to hear about new dates first.</p>
-    </div>
-</section>
-
-<!-- ====================== UPCOMING ====================== -->
-<section class="band band--bone">
-    <div class="shell reveal">
-        <div class="band-head">
-            <p class="eyebrow">Upcoming</p>
-            <h2 class="band-title">2026</h2>
+<main>
+    <section class="page-hero">
+        <div class="shell">
+            <p class="eyebrow">Wildlife</p>
+            <h1 class="page-title">A vital corridor hidden in the city</h1>
+            <p class="page-lede">Despite heavy urbanization, the Lower Palisades support a surprising diversity of wildlife where very little natural area remains.</p>
         </div>
+    </section>
 
-        <div class="event"
-             data-event-start="2026-07-31T18:00:00-04:00"
-             data-event-display="July 31, 2026 &middot; 6:00 PM"
-             data-event-location="Bocce Court, Jersey City Heights">
-            <div class="event-date">
-                <span class="event-month">Jul</span>
-                <span class="event-day">31</span>
-                <span class="event-year">2026</span>
+    <section class="band band--bone">
+        <div class="shell reveal">
+            <div class="split">
+                <div class="split-text">
+                    <p class="eyebrow">Urban habitat</p>
+                    <h2 class="band-title">Connected cliffs, woods, and rocky slopes</h2>
+                    <p>The Lower Palisades stretch through Hudson and Bergen Counties, forming a narrow natural corridor amid dense neighborhoods and infrastructure.</p>
+                    <p>Restoring native habitat and controlling invasive plants can preserve shelter and movement routes for species that continue to use this landscape.</p>
+                </div>
+                <div class="split-media">
+                    <img src="images/lower-palisades-map.jpg" alt="Map of the Lower Palisades area" loading="lazy" decoding="async">
+                </div>
             </div>
-            <div>
-                <h3>The Big Sit</h3>
-                <p class="event-facts">
-                    <span>&#128340; 6:00 PM</span>
-                    <span>&#128205; Bocce Court, Jersey City Heights, NJ</span>
-                </p>
-                <p class="event-desc">Join us for a native bird count session in cooperation with local bird watching groups. Bring binoculars and a love of birds! All experience levels welcome.</p>
+
+            <div class="figure-grid" style="margin-top: clamp(2.5rem, 5vw, 4rem);">
+                <figure>
+                    <img src="images/deer.jpg" alt="Deer below Riverview Park" loading="lazy" decoding="async">
+                    <figcaption>Deer below Riverview Park<small>December 2025</small></figcaption>
+                </figure>
+                <figure>
+                    <img src="images/fox.jpg" alt="Fox in Union City" loading="lazy" decoding="async">
+                    <figcaption>Fox in Union City<small>January 2026</small></figcaption>
+                </figure>
+                <figure>
+                    <img src="images/salamander.jpg" alt="Eastern Red-backed Salamander" loading="lazy" decoding="async">
+                    <figcaption>Eastern Red-backed Salamander below Ogden's End<small>November 2024</small></figcaption>
+                </figure>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ====================== NEXT ====================== -->
-<section class="band band--ink">
-    <div class="shell shell-narrow reveal" style="text-align:center;">
-        <h2 class="band-title">Never miss a date</h2>
-        <p class="band-intro">Sign up to get emails about updates on the project and opportunities to get involved.</p>
-        <div class="btn-row" style="justify-content:center;">
-            <a href="index.html#join" class="btn btn--solid">Join the Mailing List</a>
-            <a href="mailto:info@lowerpalisades.org" class="btn btn--ghost">Email Us</a>
+    <section class="band band--ink">
+        <div class="shell shell-narrow reveal" style="text-align:center;">
+            <h2 class="band-title">Help protect this urban habitat.</h2>
+            <div class="btn-row" style="justify-content:center;">
+                <a href="plan.html" class="btn btn--ghost">Our Plan</a>
+                <a href="index.html#join" class="btn btn--solid">Get Involved</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
-<!-- ====================== FOOTER ====================== -->
 <footer class="site-footer">
     <div class="shell">
         <div class="footer-top">
