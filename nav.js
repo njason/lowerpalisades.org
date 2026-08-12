@@ -84,6 +84,7 @@
                         start: new Date(element.dataset.eventStart),
                         displayDate: element.dataset.eventDisplay,
                         location: element.dataset.eventLocation,
+                        url: element.dataset.eventUrl,
                         title: element.querySelector('h3').textContent.trim()
                     };
                 }).filter(function (event) {
@@ -100,6 +101,9 @@
                 document.getElementById('eventPopupTitle').textContent = featured.event.title;
                 document.getElementById('eventPopupDate').textContent = featured.event.displayDate;
                 document.getElementById('eventPopupLocation').textContent = featured.event.location;
+                if (featured.event.url) {
+                    eventPopup.querySelector('.event-popup-link').href = featured.event.url;
+                }
 
                 function showEventPopup() {
                     eventPopup.hidden = false;
@@ -131,8 +135,6 @@
     if (eventCalendar) {
         var calendarGrid = eventCalendar.querySelector('[data-calendar-grid]');
         var calendarMonth = eventCalendar.querySelector('[data-calendar-month]');
-        var calendarPlaceholder = eventCalendar.querySelector('[data-calendar-placeholder]');
-        var calendarSelection = eventCalendar.querySelector('[data-calendar-selection]');
         var calendarEvents = Array.prototype.slice.call(
             document.querySelectorAll('.event[data-event-start]')
         ).map(function (element) {
@@ -159,19 +161,11 @@
             return [date.getFullYear(), date.getMonth(), date.getDate()].join('-');
         }
 
-        function showCalendarEvent(event, button) {
-            calendarGrid.querySelectorAll('.is-selected').forEach(function (day) {
-                day.classList.remove('is-selected');
-                day.removeAttribute('aria-current');
-            });
-            button.classList.add('is-selected');
-            button.setAttribute('aria-current', 'date');
-            calendarPlaceholder.hidden = true;
-            calendarSelection.hidden = false;
-            eventCalendar.querySelector('[data-calendar-detail-date]').textContent = event.displayDate;
-            eventCalendar.querySelector('[data-calendar-detail-title]').textContent = event.title;
-            eventCalendar.querySelector('[data-calendar-detail-location]').textContent = event.location;
-            eventCalendar.querySelector('[data-calendar-detail-description]').textContent = event.description;
+        function showCalendarEvent(event) {
+            event.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            window.setTimeout(function () {
+                event.element.focus({ preventScroll: true });
+            }, 400);
         }
 
         function renderCalendar() {
@@ -214,29 +208,16 @@
                     day.type = 'button';
                     day.classList.add('has-event');
 
-                    var eventTitle = document.createElement('span');
-                    eventTitle.className = 'calendar-day-event';
-                    eventTitle.textContent = events[0].title;
-                    day.appendChild(eventTitle);
-
-                    var eventTime = document.createElement('span');
-                    eventTime.className = 'calendar-day-time';
-                    eventTime.textContent = events[0].start.toLocaleTimeString('en-US', {
-                        hour: 'numeric',
-                        minute: '2-digit'
-                    });
-                    day.appendChild(eventTime);
-
                     day.setAttribute('aria-label', date.toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
                         year: 'numeric'
                     }) + ': ' + events.map(function (event) { return event.title; }).join(', '));
-                    day.addEventListener('click', function (event, button) {
+                    day.addEventListener('click', function (event) {
                         return function () {
-                            showCalendarEvent(event, button);
+                            showCalendarEvent(event);
                         };
-                    }(events[0], day));
+                    }(events[0]));
                 } else {
                     day.setAttribute('aria-hidden', 'true');
                 }

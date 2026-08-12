@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Calendar &mdash; Lower Palisades Restoration Project</title>
-    <meta name="description" content="Upcoming events, walks and volunteer days on the Lower Palisades.">
+    <title>The Big Sit &mdash; Lower Palisades Restoration Project</title>
+    <meta name="description" content="The Big Sit native bird count at the Jersey City Heights bocce court.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- ====================== MASTHEAD ====================== -->
 <header class="masthead" id="masthead">
     <div class="masthead-inner">
         <a href="index.html" class="brand">
@@ -43,64 +42,34 @@
     </div>
 </header>
 
-<!-- ====================== CALENDAR ====================== -->
-<main class="events-page">
-<section class="band band--bone">
-    <div class="shell reveal">
-        <h1 class="events-title">Event Calendar</h1>
-        <div class="calendar-layout" data-event-calendar>
-            <div class="calendar">
-                <div class="calendar-header">
-                    <button class="calendar-nav" type="button" data-calendar-prev aria-label="Previous month">&larr;</button>
-                    <h2 class="calendar-month" data-calendar-month></h2>
-                    <button class="calendar-nav" type="button" data-calendar-next aria-label="Next month">&rarr;</button>
-                </div>
-                <div class="calendar-weekdays" aria-hidden="true">
-                    <span>Sun</span>
-                    <span>Mon</span>
-                    <span>Tue</span>
-                    <span>Wed</span>
-                    <span>Thu</span>
-                    <span>Fri</span>
-                    <span>Sat</span>
-                </div>
-                <div class="calendar-grid" data-calendar-grid></div>
-            </div>
-
+<main>
+    <section class="page-hero">
+        <div class="shell">
+            <p class="eyebrow">July 31, 2026 &middot; 6:00 PM</p>
+            <h1 class="page-title">The Big Sit</h1>
+            <p class="page-lede">Bocce Court, Jersey City Heights, NJ</p>
         </div>
+    </section>
 
-        <div class="event-card-list">
-        <a class="event event-card" id="event-big-sit" href="big-sit.html"
-             data-event-start="2026-07-31T18:00:00-04:00"
-             data-event-display="July 31, 2026 &middot; 6:00 PM"
-             data-event-location="Bocce Court, Jersey City Heights"
-             data-event-url="big-sit.html">
-            <p class="event-card-date">July 31, 2026 &middot; 6:00 PM</p>
-            <div>
-                <h3>The Big Sit</h3>
-                <p class="event-card-location">Bocce Court, Jersey City Heights</p>
-                <p class="event-desc">Join us for a native bird count session in cooperation with local bird watching groups. Bring binoculars and a love of birds! All experience levels welcome.</p>
+    <section class="band band--bone">
+        <div class="shell reveal">
+            <div class="split">
+                <div class="split-text">
+                    <p class="eyebrow">Native bird count</p>
+                    <h2 class="band-title">Bring binoculars and a love of birds.</h2>
+                    <p>Join us for a native bird count session in cooperation with local bird watching groups. All experience levels are welcome.</p>
+                    <div class="btn-row">
+                        <a href="events.html" class="btn btn--ghost">&larr; Event Calendar</a>
+                    </div>
+                </div>
+                <div class="split-media">
+                    <img src="images/birds-bocce-illustration.jpg" alt="Illustration of birds gathered at the bocce court">
+                </div>
             </div>
-            <span class="event-card-arrow">&rarr;</span>
-        </a>
         </div>
-    </div>
-</section>
+    </section>
 </main>
 
-<!-- ====================== NEXT ====================== -->
-<section class="band band--ink">
-    <div class="shell shell-narrow reveal" style="text-align:center;">
-        <h2 class="band-title">Never miss a date</h2>
-        <p class="band-intro">Sign up to get emails about updates on the project and opportunities to get involved.</p>
-        <div class="btn-row" style="justify-content:center;">
-            <a href="index.html#join" class="btn btn--solid">Join the Mailing List</a>
-            <a href="mailto:info@lowerpalisades.org" class="btn btn--ghost">Email Us</a>
-        </div>
-    </div>
-</section>
-
-<!-- ====================== FOOTER ====================== -->
 <footer class="site-footer">
     <div class="shell">
         <div class="footer-top">

@@ -1134,6 +1134,11 @@ figcaption small {
     padding-top: var(--nav-h);
 }
 
+.events-title {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
 .calendar {
     padding: clamp(1rem, 2.5vw, 1.75rem);
     background: var(--paper);
@@ -1203,29 +1208,11 @@ figcaption small {
     font-weight: 650;
 }
 
-.calendar-day-event {
-    display: block;
-    margin-top: 0.65rem;
-    color: var(--moss);
-    font-size: clamp(0.7rem, 1vw, 0.84rem);
-    font-weight: 700;
-    line-height: 1.25;
-}
-
-.calendar-day-time {
-    display: block;
-    margin-top: 0.25rem;
-    color: var(--text-muted);
-    font-size: 0.68rem;
-    font-weight: 500;
-}
-
 button.calendar-day {
     cursor: pointer;
 }
 
-button.calendar-day:hover,
-.calendar-day.is-selected {
+button.calendar-day:hover {
     color: var(--forest);
     background: rgba(87, 122, 84, 0.12);
 }
@@ -1249,42 +1236,59 @@ button.calendar-day:hover,
     font-weight: 700;
 }
 
-.calendar-details {
-    min-height: 240px;
-    padding: clamp(1.5rem, 3vw, 2.25rem);
-    color: var(--text-invert);
-    background: var(--forest);
+.event-card-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.event-card {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.35fr) 1fr auto;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: center;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    color: var(--text);
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--clay);
     border-radius: 4px;
+    text-decoration: none;
+    scroll-margin-top: calc(var(--nav-h) + 2rem);
 }
 
-.calendar-details .eyebrow {
-    color: var(--gold);
+.event-card:hover,
+.event-card:focus {
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(8, 25, 15, 0.12);
 }
 
-.calendar-details h2 {
-    margin-top: 0.55rem;
-    font-size: clamp(1.65rem, 3vw, 2.35rem);
-}
-
-.calendar-details p {
-    margin-top: 1rem;
-    color: var(--text-invert-muted);
-}
-
-.calendar-detail-date {
-    color: var(--sage) !important;
-    font-size: 0.8rem;
-    font-weight: 650;
+.event-card-date {
+    color: var(--clay);
+    font-size: 0.76rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-.calendar-detail-location {
-    font-weight: 600;
+.event-card h3 {
+    font-size: clamp(1.45rem, 3vw, 2rem);
 }
 
-.event-calendar-data {
-    display: none;
+.event-card-location {
+    margin-top: 0.35rem;
+    color: var(--moss);
+    font-weight: 650;
+}
+
+.event-card .event-desc {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+}
+
+.event-card-arrow {
+    color: var(--moss);
+    font-size: 1.4rem;
 }
 
 /* --- Signup / Join -------------------------------------------------------- */
@@ -1872,23 +1876,18 @@ button.calendar-day:hover,
         font-size: 1.35rem;
     }
 
-    .calendar-details {
-        min-height: 220px;
-    }
-
     .calendar-day {
-        min-height: 72px;
+        min-height: 58px;
         padding: 0.4rem;
         font-size: 0.82rem;
     }
 
-    .calendar-day-event {
-        margin-top: 0.35rem;
-        font-size: 0.64rem;
+    .event-card {
+        grid-template-columns: 1fr auto;
     }
 
-    .calendar-day-time {
-        display: none;
+    .event-card-date {
+        grid-column: 1 / -1;
     }
 
     .calendar-day.has-event::after {
