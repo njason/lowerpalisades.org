@@ -48,31 +48,6 @@
         window.addEventListener('scroll', syncMasthead, { passive: true });
     }
 
-    /* --- Before/after hero reveal ------------------------------------------ */
-    var heroReveal = document.querySelector('[data-hero-reveal]');
-
-    if (heroReveal) {
-        var hero = heroReveal.closest('.hero');
-
-        function updateHeroReveal(clientX) {
-            var bounds = heroReveal.getBoundingClientRect();
-            var position = Math.min(Math.max(clientX - bounds.left, 0), bounds.width);
-            heroReveal.style.setProperty('--hero-reveal', (position / bounds.width * 100) + '%');
-        }
-
-        hero.addEventListener('pointermove', function (event) {
-            if (event.pointerType === 'mouse' || hero.hasPointerCapture(event.pointerId)) {
-                updateHeroReveal(event.clientX);
-            }
-        });
-
-        hero.addEventListener('pointerdown', function (event) {
-            if (event.target.closest('a, button')) return;
-            hero.setPointerCapture(event.pointerId);
-            updateHeroReveal(event.clientX);
-        });
-    }
-
     /* --- Upcoming event popup ---------------------------------------------- */
     var eventPopup = document.getElementById('eventPopup');
     var dismissEventPopup = document.getElementById('dismissEventPopup');

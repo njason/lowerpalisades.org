@@ -418,40 +418,16 @@ h4 {
 }
 
 .hero-media {
-    --hero-reveal: 50%;
     position: absolute;
     inset: 0;
 }
 
 .hero-media img {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scale(1.06);
-}
-
-.hero-image--before {
-    clip-path: inset(0 calc(100% - var(--hero-reveal)) 0 0);
-}
-
-.hero--reveal {
-    cursor: col-resize;
-    touch-action: pan-y;
-}
-
-.hero-reveal-handle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: var(--hero-reveal);
-    z-index: 2;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.75);
-    box-shadow: 0 0 0 1px rgba(8, 25, 15, 0.25);
-    pointer-events: none;
-    transform: translateX(-1px);
+    animation: heroDrift 24s var(--ease) forwards;
 }
 
 @keyframes heroDrift {
@@ -476,7 +452,7 @@ h4 {
 
 .hero-inner {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     width: 100%;
     max-width: var(--shell);
     margin-inline: auto;
