@@ -270,7 +270,8 @@ h4 {
     transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-.masthead.is-stuck {
+.masthead.is-stuck,
+.masthead-solid .masthead {
     background: rgba(8, 25, 15, 0.94);
     backdrop-filter: blur(14px);
     box-shadow: 0 1px 0 var(--rule-invert);
