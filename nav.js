@@ -125,6 +125,121 @@
             });
     }
 
+    /* --- Events calendar --------------------------------------------------- */
+    var eventCalendar = document.querySelector('[data-event-calendar]');
+
+    if (eventCalendar) {
+        var calendarGrid = eventCalendar.querySelector('[data-calendar-grid]');
+        var calendarMonth = eventCalendar.querySelector('[data-calendar-month]');
+        var calendarPlaceholder = eventCalendar.querySelector('[data-calendar-placeholder]');
+        var calendarSelection = eventCalendar.querySelector('[data-calendar-selection]');
+        var calendarEvents = Array.prototype.slice.call(
+            document.querySelectorAll('.event[data-event-start]')
+        ).map(function (element) {
+            return {
+                element: element,
+                start: new Date(element.dataset.eventStart),
+                displayDate: element.dataset.eventDisplay,
+                location: element.dataset.eventLocation,
+                title: element.querySelector('h3').textContent.trim(),
+                description: element.querySelector('.event-desc').textContent.trim()
+            };
+        }).filter(function (event) {
+            return !Number.isNaN(event.start.getTime());
+        }).sort(function (a, b) {
+            return a.start - b.start;
+        });
+
+        var referenceEvent = selectFeaturedEvent(calendarEvents, new Date());
+        var visibleMonth = referenceEvent
+            ? new Date(referenceEvent.event.start.getFullYear(), referenceEvent.event.start.getMonth(), 1)
+            : new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+
+        function eventDateKey(date) {
+            return [date.getFullYear(), date.getMonth(), date.getDate()].join('-');
+        }
+
+        function showCalendarEvent(event, button) {
+            calendarGrid.querySelectorAll('.is-selected').forEach(function (day) {
+                day.classList.remove('is-selected');
+                day.removeAttribute('aria-current');
+            });
+            button.classList.add('is-selected');
+            button.setAttribute('aria-current', 'date');
+            calendarPlaceholder.hidden = true;
+            calendarSelection.hidden = false;
+            eventCalendar.querySelector('[data-calendar-detail-date]').textContent = event.displayDate;
+            eventCalendar.querySelector('[data-calendar-detail-title]').textContent = event.title;
+            eventCalendar.querySelector('[data-calendar-detail-location]').textContent = event.location;
+            eventCalendar.querySelector('[data-calendar-detail-description]').textContent = event.description;
+        }
+
+        function renderCalendar() {
+            var year = visibleMonth.getFullYear();
+            var month = visibleMonth.getMonth();
+            var firstDay = new Date(year, month, 1);
+            var gridStart = new Date(year, month, 1 - firstDay.getDay());
+            var eventsByDate = {};
+
+            calendarEvents.forEach(function (event) {
+                var key = eventDateKey(event.start);
+                if (!eventsByDate[key]) eventsByDate[key] = [];
+                eventsByDate[key].push(event);
+            });
+
+            calendarMonth.textContent = visibleMonth.toLocaleDateString('en-US', {
+                month: 'long',
+                year: 'numeric'
+            });
+            calendarGrid.replaceChildren();
+
+            for (var index = 0; index < 42; index += 1) {
+                var date = new Date(
+                    gridStart.getFullYear(),
+                    gridStart.getMonth(),
+                    gridStart.getDate() + index
+                );
+                var events = eventsByDate[eventDateKey(date)];
+                var day = document.createElement(events ? 'button' : 'span');
+                day.className = 'calendar-day';
+                day.textContent = date.getDate();
+
+                if (date.getMonth() !== month) day.classList.add('is-outside');
+
+                if (events) {
+                    day.type = 'button';
+                    day.classList.add('has-event');
+                    day.setAttribute('aria-label', date.toLocaleDateString('en-US', {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric'
+                    }) + ': ' + events.map(function (event) { return event.title; }).join(', '));
+                    day.addEventListener('click', function (event, button) {
+                        return function () {
+                            showCalendarEvent(event, button);
+                        };
+                    }(events[0], day));
+                } else {
+                    day.setAttribute('aria-hidden', 'true');
+                }
+
+                calendarGrid.appendChild(day);
+            }
+        }
+
+        eventCalendar.querySelector('[data-calendar-prev]').addEventListener('click', function () {
+            visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1);
+            renderCalendar();
+        });
+
+        eventCalendar.querySelector('[data-calendar-next]').addEventListener('click', function () {
+            visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1);
+            renderCalendar();
+        });
+
+        renderCalendar();
+    }
+
     /* --- Reveal on scroll -------------------------------------------------- */
     var revealables = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
 

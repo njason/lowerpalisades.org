@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Calendar &mdash; Lower Palisades Restoration Project</title>
+    <title>Events &mdash; Lower Palisades Restoration Project</title>
     <meta name="description" content="Upcoming events, walks and volunteer days on the Lower Palisades.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,37 +46,54 @@
 <!-- ====================== PAGE HEAD ====================== -->
 <section class="page-hero">
     <div class="shell">
-        <p class="eyebrow">Events</p>
-        <h1 class="page-title">Events Calendar</h1>
+        <h1 class="page-title">Events</h1>
         <p class="page-lede">Walks, bird counts and volunteer days on the Lower Palisades. Sign up for the mailing list to hear about new dates first.</p>
     </div>
 </section>
 
-<!-- ====================== UPCOMING ====================== -->
+<!-- ====================== CALENDAR ====================== -->
 <section class="band band--bone">
     <div class="shell reveal">
-        <div class="band-head">
-            <p class="eyebrow">Upcoming</p>
-            <h2 class="band-title">2026</h2>
+        <div class="calendar-layout" data-event-calendar>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav" type="button" data-calendar-prev aria-label="Previous month">&larr;</button>
+                    <h2 class="calendar-month" data-calendar-month></h2>
+                    <button class="calendar-nav" type="button" data-calendar-next aria-label="Next month">&rarr;</button>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div class="calendar-grid" data-calendar-grid></div>
+            </div>
+
+            <aside class="calendar-details" data-calendar-details aria-live="polite">
+                <p class="eyebrow">Event details</p>
+                <div data-calendar-placeholder>
+                    <h2>Select a date</h2>
+                    <p>Dates with events are highlighted in the calendar.</p>
+                </div>
+                <div data-calendar-selection hidden>
+                    <p class="calendar-detail-date" data-calendar-detail-date></p>
+                    <h2 data-calendar-detail-title></h2>
+                    <p class="calendar-detail-location" data-calendar-detail-location></p>
+                    <p data-calendar-detail-description></p>
+                </div>
+            </aside>
         </div>
 
-        <div class="event"
+        <div class="event event-calendar-data"
              data-event-start="2026-07-31T18:00:00-04:00"
              data-event-display="July 31, 2026 &middot; 6:00 PM"
              data-event-location="Bocce Court, Jersey City Heights">
-            <div class="event-date">
-                <span class="event-month">Jul</span>
-                <span class="event-day">31</span>
-                <span class="event-year">2026</span>
-            </div>
-            <div>
-                <h3>The Big Sit</h3>
-                <p class="event-facts">
-                    <span>&#128340; 6:00 PM</span>
-                    <span>&#128205; Bocce Court, Jersey City Heights, NJ</span>
-                </p>
-                <p class="event-desc">Join us for a native bird count session in cooperation with local bird watching groups. Bring binoculars and a love of birds! All experience levels welcome.</p>
-            </div>
+            <h3>The Big Sit</h3>
+            <p class="event-desc">Join us for a native bird count session in cooperation with local bird watching groups. Bring binoculars and a love of birds! All experience levels welcome.</p>
         </div>
     </div>
 </section>
