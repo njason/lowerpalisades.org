@@ -298,8 +298,9 @@ h4 {
 }
 
 .brand img {
-    height: 38px;
-    width: auto;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
 
 .brand-text {
@@ -1776,7 +1777,8 @@ button.calendar-day:hover {
     }
 
     .brand img {
-        height: 32px;
+        height: 26px;
+        width: 26px;
     }
 
     .hero {
