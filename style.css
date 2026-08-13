@@ -48,6 +48,10 @@ nav {
     font-weight: bold;
 }
 
+.nav-brand img {
+    width: 80px;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
