@@ -23,23 +23,6 @@
             </span>
         </a>
 
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
-            <span></span><span></span><span></span>
-        </button>
-
-        <nav class="nav" id="primaryNav">
-            <ul class="nav-links">
-                <li><a href="index.html" class="is-active" aria-current="page">Home</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="wildlife.html">Wildlife</a></li>
-                <li><a href="plan.html">Our Plan</a></li>
-                <li><a href="people.html">Our Team</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <a href="contact.html" class="btn btn--solid nav-cta">Get Involved</a>
-        </nav>
     </div>
 </header>
 
@@ -53,9 +36,9 @@
         <h1>A Natural Wonder <em>Hidden in the Weeds</em></h1>
         <p class="hero-lede">This is a project to help fund and organize habitat restoration on the Lower Palisades. The Lower Palisades is the portion of the <a href="https://www.britannica.com/place/The-Palisades">NJ Palisades</a> that are South of the George Washington Bridge.</p>
         <div class="btn-row">
-            <a href="contact.html" class="btn btn--solid">Get Involved</a>
-            <a href="plan.html" class="btn btn--ghost">Our Plan</a>
-            <a href="events.html" class="btn btn--ghost">Events Calendar</a>
+            <a href="#join" class="btn btn--solid">Get Involved</a>
+            <a href="#plan" class="btn btn--ghost">Our Plan</a>
+            <a href="#events" class="btn btn--ghost">Events Calendar</a>
         </div>
         <a href="#mission" class="hero-scroll">Scroll <span>&darr;</span></a>
     </div>
@@ -66,24 +49,52 @@
     <div class="shell reveal">
         <p class="eyebrow">Mission</p>
         <h2 class="mission-statement">To fund and organize habitat restoration on the Lower Palisades &mdash; a vital wildlife corridor where very little natural area still exists.</h2>
-        <div class="mission-body">
-            <div>
-                <p>The &ldquo;Lower Palisades&rdquo; stretches from a half mile south of the George Washington Bridge to Jersey City. While the cliffs to the north have been maintained through successful preservation efforts, no such environmental management exists for the Lower Palisades.</p>
+        <div class="split">
+            <div class="split-text">
+                <p>The Lower Palisades stretch through Hudson and Bergen Counties, forming a narrow natural corridor amid dense neighborhoods and infrastructure.</p>
+                <p>Restoring native habitat and controlling invasive plants can preserve shelter and movement routes for species that continue to use this landscape.</p>
             </div>
-            <div class="support">
-                <a href="history.html" class="btn btn--ghost">More than the Palisades Interstate Park &rarr;</a>
+            <div class="split-media">
+                <img src="images/lower-palisades-map.jpg" alt="Map of the Lower Palisades area" loading="lazy" decoding="async">
             </div>
+        </div>
+        <div class="figure-grid" style="margin-top: clamp(2.5rem, 5vw, 4rem);">
+            <figure>
+                <img src="images/deer.jpg" alt="Deer below Riverview Park" loading="lazy" decoding="async">
+                <figcaption>Deer below Riverview Park<small>December 2025</small></figcaption>
+            </figure>
+            <figure>
+                <img src="images/fox.jpg" alt="Fox in Union City" loading="lazy" decoding="async">
+                <figcaption>Fox in Union City<small>January 2026</small></figcaption>
+            </figure>
+            <figure>
+                <img src="images/salamander.jpg" alt="Eastern Red-backed Salamander" loading="lazy" decoding="async">
+                <figcaption>Eastern Red-backed Salamander below Ogden's End<small>November 2024</small></figcaption>
+            </figure>
         </div>
     </div>
 </section>
 
-<!-- ====================== 03 GOALS / INITIATIVES ====================== -->
-<section class="band band--ink" id="initiatives">
+<!-- ====================== PLAN ====================== -->
+<section class="band band--forest" id="plan" aria-label="Historic efforts">
+    <div class="shell reveal">
+        <div class="band-head">
+            <h2 class="band-title">Our Path to Restoration</h2>
+        </div>
+        <div class="split-text">
+            <p>We want to restore the Lower Palisades as a connected urban natural area.</p>
+            <p>The Palisades were nearly destroyed by quarrying in the late 1800s. A grassroots campaign led by the New Jersey State Federation of Women's Clubs helped create the Palisades Interstate Park Commission in 1900.</p>
+            <p>Land acquisition and long-term stewardship protected the cliffs in Bergen and Rockland Counties. South of that managed parkland, the Lower Palisades remain divided among municipal and private lots without comparable environmental management.</p>
+            <p>Existing tools such as Jersey City's Palisades Preservation Overlay District provide a foundation, but protecting views and development patterns is not the same as managing an urban cliff ecosystem.</p>
+        </div>
+    </div>
+</section>
+
+<section class="band band--ink" id="issues" aria-labelledby="issues-title">
     <div class="shell reveal">
         <div class="current-issues-layout">
             <div>
-                <p class="eyebrow">Goals &amp; Initiatives</p>
-                <h2 class="band-title">Current Issues</h2>
+                <h2 class="band-title" id="issues-title">Current Issues</h2>
                 <p class="band-intro">The Lower Palisades need coordinated ecological management, not one-off maintenance.</p>
             </div>
             <div class="issue-list-wrap">
@@ -143,39 +154,30 @@
                         </div>
                     </details>
                 </div>
-                <div class="btn-row">
-                    <a href="plan.html" class="btn btn--solid">Our Plan &rarr;</a>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ====================== BACKGROUND / HISTORY ====================== -->
-<section class="band band--forest" id="history">
+<section class="band band--forest" id="solutions" aria-labelledby="solutions-title">
     <div class="shell reveal">
         <div class="band-head">
-            <p class="eyebrow">Background &amp; History</p>
-            <h2 class="band-title">Then &amp; Now</h2>
+            <h2 class="band-title" id="solutions-title">Our Plan</h2>
         </div>
-
-        <div class="figure-grid">
-            <figure>
-                <img src="images/riverview-old.jpg" alt="Below Riverview Park in the early 1900s" loading="lazy" decoding="async">
-                <figcaption>Early 1900s</figcaption>
-            </figure>
-            <figure>
-                <img src="images/riverview-today.jpg" alt="Below Riverview Park today" loading="lazy" decoding="async">
-                <figcaption>Today</figcaption>
-            </figure>
-        </div>
-
-        <div class="split-text history-summary">
-            <p>The Palisade Cliffs are 200 million years old, but they didn't come under threat until quite recently. The stretch of the NJ Palisades North of the George Washington Bridge have been protected since 1900, but the Lower Palisades continue to be neglected.</p>
-            <p class="btn-row" style="margin-top:2rem;">
-                <a href="history.html" class="btn btn--ghost">Read The Full History &rarr;</a>
-            </p>
-        </div>
+        <ol class="plan-steps">
+            <li class="plan-step">
+                <h3>Start Small</h3>
+                <p>Begin with City-owned lots on the Palisades cliffs, specifically beneath Riverview Park, and establish a repeatable restoration model.</p>
+            </li>
+            <li class="plan-step">
+                <h3>Get Organized</h3>
+                <p>Create a master environmental-management plan based on urban habitat-restoration practices, then secure funding for invasive plants and trash removal.</p>
+            </li>
+            <li class="plan-step">
+                <h3>Build on Existing Protections</h3>
+                <p>Connect current ordinances and planning efforts to ecological goals so protection includes the cliff ecosystem as well as skyline views.</p>
+            </li>
+        </ol>
     </div>
 </section>
 
@@ -187,19 +189,6 @@
         </div>
         <div class="video-frame">
             <iframe src="https://www.youtube.com/embed/b3LrMkUena8" title="Lower Palisades Restoration Project Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-</section>
-
-<!-- ====================== PERSONNEL ====================== -->
-<section class="band band--bone" id="people">
-    <div class="shell reveal">
-        <div class="band-head">
-            <h2 class="band-title">Our Team</h2>
-            <p class="band-intro">The project is run by Jason Biegel, a community conservationist and resident of the Jersey City Heights since 2012.</p>
-        </div>
-        <div class="btn-row">
-            <a href="people.html" class="btn btn--ghost">Meet the team &rarr;</a>
         </div>
     </div>
 </section>
@@ -238,9 +227,68 @@
                 <span class="news-arrow">&rarr;</span>
             </a>
         </div>
-        <div class="btn-row">
-            <a href="events.html" class="btn btn--ghost">View the events calendar &rarr;</a>
+    </div>
+</section>
+
+<!-- ====================== EVENTS ====================== -->
+<section class="band band--bone" id="events">
+    <div class="shell reveal">
+        <h2 class="events-title">Event Calendar</h2>
+        <div class="calendar-layout" data-event-calendar>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav" type="button" data-calendar-prev aria-label="Previous month">&larr;</button>
+                    <h3 class="calendar-month" data-calendar-month></h3>
+                    <button class="calendar-nav" type="button" data-calendar-next aria-label="Next month">&rarr;</button>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div class="calendar-grid" data-calendar-grid></div>
+            </div>
         </div>
+        <div class="event-card-list">
+            <a class="event event-card" id="event-big-sit" href="big-sit.html"
+                 data-event-start="2026-07-31T18:00:00-04:00"
+                 data-event-display="July 31, 2026 &middot; 6:00 PM"
+                 data-event-location="Bocce Court, Jersey City Heights"
+                 data-event-url="big-sit.html">
+                <p class="event-card-date">July 31, 2026 &middot; 6:00 PM</p>
+                <div>
+                    <h3>The Big Sit</h3>
+                    <p class="event-card-location">Bocce Court, Jersey City Heights</p>
+                    <p class="event-desc">Join us for a native bird count session in cooperation with local bird watching groups. Bring binoculars and a love of birds! All experience levels welcome.</p>
+                </div>
+                <span class="event-card-arrow">&rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ====================== RESOURCES ====================== -->
+<section class="band band--ink" id="resources">
+    <div class="shell reveal">
+        <div class="band-head">
+            <p class="eyebrow">Resources &amp; Further Reading</p>
+            <h2 class="band-title">Where to learn more</h2>
+            <p class="band-intro">Organizations working to protect the Palisades and the Hudson waterfront, and background reading on how the cliffs were formed and saved.</p>
+        </div>
+        <h3 class="resource-group">Organizations</h3>
+        <ul class="link-list">
+            <li><a href="https://njpalisades.org/pipc/"><span>Palisades Interstate Park Commission</span><span class="link-kind">njpalisades.org</span></a></li>
+            <li><a href="https://www.greenbrooksanctuary.org/"><span>Palisades Nature Association &mdash; Greenbrook Sanctuary</span><span class="link-kind">greenbrooksanctuary.org</span></a></li>
+            <li><a href="https://www.nyrp.org/en/"><span>New York Restoration Project</span><span class="link-kind">nyrp.org</span></a></li>
+            <li><a href="https://www.lhprism.org/"><span>Lower Hudson PRISM &mdash; Partnership for Regional Invasive Species Management</span><span class="link-kind">lhprism.org</span></a></li>
+            <li><a href="https://www.jerseycitynj.gov/residentresources/environmentalcommission"><span>Jersey City Environmental Commission</span><span class="link-kind">jerseycitynj.gov</span></a></li>
+        </ul>
+        <h3 class="resource-group" style="margin-top: clamp(2.5rem, 5vw, 4rem);">Further Reading</h3>
+        <ul class="link-list">
+            <li><a href="https://njpalisades.org/nature/"><span>NJ Palisades &mdash; Nature</span><span class="link-kind">njpalisades.org</span></a></li>
+            <li><a href="https://www.amnh.org/learn-teach/curriculum-collections/young-naturalist-awards/shaped-by-nature-and-man-the-geological-history-of-the-palisades"><span>AMNH &mdash; Geological History of the Palisades</span><span class="link-kind">amnh.org</span></a></li>
+            <li><a href="https://www.britannica.com/place/The-Palisades"><span>Britannica &mdash; The Palisades</span><span class="link-kind">britannica.com</span></a></li>
+            <li><a href="https://betterwaterfront.org/the-hudson-river-palisades-a-story-of-desecration-and-preservation/"><span>Fund for a Better Waterfront &mdash; A Story of Desecration and Preservation</span><span class="link-kind">betterwaterfront.org</span></a></li>
+            <li><a href="https://www.scenichudson.org/viewfinder/exploring-the-palisades-200-million-years-of-history/"><span>Scenic Hudson &mdash; Exploring the Palisades</span><span class="link-kind">scenichudson.org</span></a></li>
+        </ul>
     </div>
 </section>
 
@@ -248,9 +296,7 @@
 <section class="band band--ink" id="join">
     <div class="shell reveal">
         <div class="split-text shell-narrow">
-                <p class="eyebrow">Join</p>
-                <h2 class="band-title">Get Involved</h2>
-                <p class="band-intro">Sign up to get emails about updates on the project and opportunities to get involved.</p>
+                <h2 class="band-title">Join the Mailing List</h2>
 
                 <form class="signup" action="https://lowerpalisades.us2.list-manage.com/subscribe/post?u=3729a6281c1b321b8a97585e9&amp;id=2f850af46c&amp;f_id=00a8c2e1f0" method="post" target="_blank">
                     <label class="signup-label" for="signup-email">Email address</label>
@@ -260,7 +306,8 @@
                         <button type="submit" class="btn btn--leaf">Sign Up</button>
                     </div>
                 </form>
-                <p class="signup-note">Or email us directly: <a href="mailto:info@lowerpalisades.org">info@lowerpalisades.org</a></p>
+                <h3 class="resource-group">Email Us</h3>
+                <p class="signup-note"><a href="mailto:info@lowerpalisades.org">info@lowerpalisades.org</a></p>
         </div>
     </div>
 </section>
@@ -277,20 +324,17 @@
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="#mission">Mission</a></li>
-                    <li><a href="plan.html">Our Plan</a></li>
-                    <li><a href="history.html">Background &amp; History</a></li>
-                    <li><a href="wildlife.html">Wildlife</a></li>
-                    <li><a href="people.html">Our Team</a></li>
+                    <li><a href="#plan">Our Plan</a></li>
                     <li><a href="#news">News</a></li>
-                    <li><a href="events.html">Events</a></li>
+                    <li><a href="#events">Events</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Take Action</h4>
                 <ul>
                     <li><a href="#join">Join the Mailing List</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#join">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -329,7 +373,7 @@
         <span id="eventPopupDate"></span>
         <span id="eventPopupLocation"></span>
     </p>
-    <a class="event-popup-link" href="events.html">View event details &rarr;</a>
+    <a class="event-popup-link" href="#events">View event details &rarr;</a>
 </aside>
 
 <script src="nav.js"></script>

@@ -1,41 +1,6 @@
 (function () {
     'use strict';
 
-    /* --- Mobile navigation ------------------------------------------------ */
-    var toggle = document.getElementById('navToggle');
-    var nav = document.getElementById('primaryNav');
-
-    function closeNav() {
-        nav.classList.remove('is-open');
-        toggle.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('nav-locked');
-    }
-
-    if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-            var open = nav.classList.toggle('is-open');
-            toggle.classList.toggle('is-open', open);
-            toggle.setAttribute('aria-expanded', String(open));
-            document.body.classList.toggle('nav-locked', open);
-        });
-
-        nav.addEventListener('click', function (e) {
-            if (e.target.closest('a')) closeNav();
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeNav();
-        });
-
-        // The menu is desktop-irrelevant: never leave it latched open on resize.
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 1024 && nav.classList.contains('is-open')) {
-                closeNav();
-            }
-        });
-    }
-
     /* --- Masthead background on scroll ------------------------------------ */
     var masthead = document.getElementById('masthead');
 
@@ -69,16 +34,9 @@
     }
 
     if (eventPopup && dismissEventPopup) {
-        fetch('events.html')
-            .then(function (response) {
-                if (!response.ok) throw new Error('Events calendar returned ' + response.status);
-                return response.text();
-            })
-            .then(function (html) {
-                var calendar = new DOMParser().parseFromString(html, 'text/html');
-                var events = Array.prototype.slice.call(
-                    calendar.querySelectorAll('.event[data-event-start]')
-                ).map(function (element) {
+        var events = Array.prototype.slice.call(
+            document.querySelectorAll('.event[data-event-start]')
+        ).map(function (element) {
                     return {
                         id: element.dataset.eventStart,
                         start: new Date(element.dataset.eventStart),
@@ -87,46 +45,44 @@
                         url: element.dataset.eventUrl,
                         title: element.querySelector('h3').textContent.trim()
                     };
-                }).filter(function (event) {
-                    return !Number.isNaN(event.start.getTime());
+        }).filter(function (event) {
+            return !Number.isNaN(event.start.getTime());
+        });
+        var featured = selectFeaturedEvent(events, new Date());
+
+        if (featured) {
+
+            var eventPopupKey = 'dismissed-event-' + featured.event.id;
+            if (localStorage.getItem(eventPopupKey) !== 'true') {
+
+            document.getElementById('eventPopupLabel').textContent = featured.label;
+            document.getElementById('eventPopupTitle').textContent = featured.event.title;
+            document.getElementById('eventPopupDate').textContent = featured.event.displayDate;
+            document.getElementById('eventPopupLocation').textContent = featured.event.location;
+            if (featured.event.url) {
+                eventPopup.querySelector('.event-popup-link').href = featured.event.url;
+            }
+
+            function showEventPopup() {
+                eventPopup.hidden = false;
+                window.requestAnimationFrame(function () {
+                    eventPopup.classList.add('is-visible');
                 });
-                var featured = selectFeaturedEvent(events, new Date());
+            }
 
-                if (!featured) return;
+            function hideEventPopup() {
+                localStorage.setItem(eventPopupKey, 'true');
+                eventPopup.classList.remove('is-visible');
+                eventPopup.hidden = true;
+            }
 
-                var eventPopupKey = 'dismissed-event-' + featured.event.id;
-                if (localStorage.getItem(eventPopupKey) === 'true') return;
-
-                document.getElementById('eventPopupLabel').textContent = featured.label;
-                document.getElementById('eventPopupTitle').textContent = featured.event.title;
-                document.getElementById('eventPopupDate').textContent = featured.event.displayDate;
-                document.getElementById('eventPopupLocation').textContent = featured.event.location;
-                if (featured.event.url) {
-                    eventPopup.querySelector('.event-popup-link').href = featured.event.url;
-                }
-
-                function showEventPopup() {
-                    eventPopup.hidden = false;
-                    window.requestAnimationFrame(function () {
-                        eventPopup.classList.add('is-visible');
-                    });
-                }
-
-                function hideEventPopup() {
-                    localStorage.setItem(eventPopupKey, 'true');
-                    eventPopup.classList.remove('is-visible');
-                    eventPopup.hidden = true;
-                }
-
-                showEventPopup();
-                dismissEventPopup.addEventListener('click', hideEventPopup);
-                eventPopup.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape') hideEventPopup();
-                });
-            })
-            .catch(function (error) {
-                console.error('Unable to load the featured event popup.', error);
+            showEventPopup();
+            dismissEventPopup.addEventListener('click', hideEventPopup);
+            eventPopup.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') hideEventPopup();
             });
+            }
+        }
     }
 
     /* --- Events calendar --------------------------------------------------- */
